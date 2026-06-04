@@ -100,40 +100,6 @@ Por ejemplo, si cambias los keywords de rendimiento y seguridad, o los haces má
 
 ---
 
-## Portar los agentes a Antigravity
-
-Si estás ejecutando este entorno dentro del asistente de desarrollo **Antigravity**, los agentes personalizados se definen como **Skills** (Habilidades) del sistema. Para portar cualquiera de los agentes de este repositorio a Antigravity, debes copiar sus archivos a los directorios de configuración de habilidades correspondientes.
-
-### Ubicaciones de los archivos de habilidades
-
-Dependiendo de si deseas que la habilidad esté disponible solo para un proyecto (ámbito de espacio de trabajo) o para todos tus proyectos (ámbito global), debes copiar los archivos a una de las siguientes rutas:
-
-1. **Ámbito de espacio de trabajo (Workspace Scope):**
-   Crea una carpeta para el agente dentro de la raíz de tu proyecto en la siguiente ruta:
-   ```text
-   <workspace-root>/.agents/skills/<nombre-del-agente>/
-   ```
-   *Ejemplo para `reject-agent`:* `<workspace-root>/.agents/skills/reject-agent/`
-
-2. **Ámbito global (Global Scope):**
-   Crea la carpeta en tu directorio de configuración de usuario:
-   ```text
-   ~/.gemini/config/skills/<nombre-del-agente>/
-   ```
-   *Ejemplo para `reject-agent`:* `~/.gemini/config/skills/reject-agent/`
-
-### Instrucciones de copiado
-
-Para cada agente que desees portar:
-1. Crea el directorio del agente en una de las rutas anteriores.
-2. Copia el archivo `.md` correspondiente al agente (por ejemplo, `.claude/agents/reject-agent.md`) dentro de esa carpeta.
-3. **Renombra el archivo copiado a `SKILL.md`**.
-   *Ejemplo final:* `<workspace-root>/.agents/skills/reject-agent/SKILL.md`
-
-El frontmatter YAML al inicio del archivo `SKILL.md` (con los campos `name` y `description`) le permite a Antigravity descubrir y cargar dinámicamente la habilidad en el contexto de conversación de forma automática e inteligente cuando sea requerida.
-
----
-
 ## Prompts de activación y limitaciones de los LLMs
 
 Para interactuar con cada agente, se utilizan ciertos prompts (mensajes de activación). A continuación, se detallan ejemplos de activación y un análisis sobre cómo los modelos de lenguaje (LLMs) pueden malinterpretar las instrucciones o fallar.
