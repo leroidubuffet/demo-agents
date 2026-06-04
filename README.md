@@ -18,10 +18,11 @@ Para ejecutar estas demostraciones correctamente, necesitarás:
 Sigue estos pasos para observar el comportamiento de los agentes en tiempo real:
 
 1. **Terminal 1 (Monitoreo de Logs):**
-   Ve a la raíz del repositorio y ejecuta el siguiente comando para ver las entradas de log a medida que ocurren:
+   Ve a la raíz del repositorio y crea el archivo de log (o usa `-F` para esperar a que se cree) y ejecuta el siguiente comando para ver las entradas de log a medida que ocurren:
    ```bash
-   tail -f output/agent-log.txt
+   touch output/agent-log.txt && tail -f output/agent-log.txt
    ```
+   *(Alternativamente, puedes usar `tail -F output/agent-log.txt` en sistemas compatibles).*
 
 2. **Terminal 2 (Ejecución):**
    Inicia la herramienta Claude Code en este mismo directorio:
@@ -43,6 +44,7 @@ La arquitectura del proyecto está estructurada de la siguiente manera:
 ```text
 demo-agents/
 ├── README.md             # Guía del proyecto (este archivo)
+├── CLAUDE.md             # Guía de orquestación interpretada por Claude Code
 ├── scripts/
 │   └── log.py            # Script auxiliar para formatear y almacenar logs
 ├── output/
